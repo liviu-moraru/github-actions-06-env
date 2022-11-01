@@ -51,4 +51,21 @@ Environments sunt disponibile doar in repo. publice sau in cele private platite.
 
 Ex:
 
-- Putem creat un environment de test, unul de staging, altul de production.
+- Putem crea un environment de test, unul de staging, altul de production.
+- Fiecare environment poate avea propriile secrete
+- Alte lucruri care se pot seta intr-un environment:
+  - Required reviewers
+  - Wait timer
+  - Deployment branches (daca se doreste ca numai anumite branchuri sa declanseze joburile din environment)
+  
+```yaml
+jobs:
+  test:
+    environment: testing
+    env:
+      MONGODB_CLUSTER_ADDRESS: cluster0.iivyk6h.mongodb.net
+      MONGODB_USERNAME: ${{ secrets.MONGODB_USERNAME }}
+      MONGODB_PASSWORD: ${{ secrets.MONGODB_PASSWORD }}
+      PORT: 8080
+    runs-on: ubuntu-latest
+```
