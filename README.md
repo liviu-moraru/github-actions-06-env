@@ -23,7 +23,7 @@ Stringul de conectare: mongodb+srv://liviu:<password>@cluster0.iivyk6h.mongodb.n
 
 - Secrets pot fi stocate in Github la nivel de organizatie sau la nivel de repository
 
-### Stocare la nivel de repository
+### Stocare la nivel de repository (Repository secrets)
 
 In Github -> Repo -> Settings -> Secrets -> Actions -> New secret
 
@@ -40,3 +40,15 @@ jobs:
       MONGODB_PASSWORD: ${{ secrets.MONGODB_PASSWORD }}
 
 ```
+
+### Environments si environments secrets
+
+Environments sunt disponibile doar in repo. publice sau in cele private platite.
+
+- Un environment se ataseaza unor repositories.
+- Dupa aceea joburile din aceste repo pot referentia environmentul.
+- In environment pot fi stocate secrets, protection rules (e.g. only events related to certain branches can use an environment)
+
+Ex:
+
+- Putem creat un environment de test, unul de staging, altul de production.
